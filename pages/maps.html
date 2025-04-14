@@ -282,170 +282,128 @@
 </style>
   </style>
   <style>
-    /* 
- * Table Operations Styles
- * Styling for CRUD tables and related UI components
- */
+    
 
-/* Actions column styling */
-.actions-column {
-  text-align: center;
-  width: 120px;
-}
-
-.actions-column .btn {
-  margin: 0 3px;
-  padding: 0.25rem 0.5rem;
-}
-
-.actions-column .btn i {
-  font-size: 1rem;
-}
-
-/* Edit button styling */
-.edit-btn {
-  background-color: #17a2b8;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.edit-btn:hover {
-  background-color: #138496;
-  transform: translateY(-2px);
-}
-
-/* Delete button styling */
-.delete-btn {
-  background-color: #dc3545;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.delete-btn:hover {
-  background-color: #c82333;
-  transform: translateY(-2px);
-}
-
-/* Add button styling */
-.add-btn {
-  background-color: #28a745;
-  color: white;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
-}
-
-.add-btn:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
-}
-
-/* Modal styling */
-.modal-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.modal-footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
-}
-
-/* Form styling */
-.form-control:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-/* Table hover effects */
-.crud-table tbody tr {
-  transition: background-color 0.3s ease;
-}
-
-.crud-table tbody tr:hover {
-  background-color: rgba(0, 123, 255, 0.05);
-}
-
-/* Responsive tables for smaller screens */
-@media (max-width: 768px) {
-  .crud-table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+    /* الخريطة */
+    #map {
+      width: 100vh;
+      max-width: 100vh;
+      height: 100vh;
+     
+    }
   
-  .actions-column {
-    width: 100px;
-  }
-  
-  .actions-column .btn {
-    padding: 0.2rem 0.4rem;
-  }
-  
-  .actions-column .btn i {
-    font-size: 0.875rem;
-  }
-}
+    /* زر فتح النافذة */
+    .open-modal-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-bottom: 20px;
+    }
 
-/* Make sure modals appear above other elements */
-.modal-backdrop {
-  z-index: 1040;
-}
+    .open-modal-btn:hover {
+      background: #0056b3;
+    }
 
-.modal {
-  z-index: 1050;
-}
-
-/* SweetAlert customization to match theme */
-.swal2-popup {
-  font-size: 1rem;
-  border-radius: 0.5rem;
-}
-
-.swal2-title {
-  font-weight: 600;
-}
-
-.swal2-actions {
-  margin-top: 1.5rem;
-}
-
-.swal2-confirm {
-  background-color: #3085d6 !important;
-}
-
-.swal2-cancel {
-  background-color: #d33 !important;
-}
-
-/* RTL support for modal forms */
-.modal-body form {
-  text-align: right;
-}
-
-.modal-footer {
-  justify-content: flex-start;
-}
-
-/* Ensure tables have consistent styling */
-.table-responsive {
-  margin-bottom: 1.5rem;
-}
-
-.crud-table {
-  width: 100%;
-  margin-bottom: 0;
-}
-
-/* Ensure table header is always visible */
-.crud-table thead th {
-  position: sticky;
-  top: 0;
+    /* تحسين تصميم النافذة المنبثقة */
+    .custom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
   background-color: white;
-  z-index: 10;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  min-width: 280px;
+  max-width: 95%;
+  width: 400px;
+  max-height: 90vh; /* الحد الأقصى للارتفاع */
+  overflow-y: auto; /* تفعيل التمرير العمودي */
+  animation: fadeInScale 0.4s ease forwards;
 }
 
+    .custom-modal .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #dc3545;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .custom-modal .close-modal:hover {
+      background: #bd2130;
+    }
+
+    .custom-modal form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .custom-modal label {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .custom-modal input,
+    .custom-modal select {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    .custom-modal button[type="submit"] {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .custom-modal button[type="submit"]:hover {
+      background: #218838;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .custom-modal {
+        width: 95%;
+        padding: 15px 20px;
+      }
+
+      #map {
+        height: 50vh;
+      }
+    }
   </style>
+   
+   
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -821,7 +779,7 @@
         <tfoot>
           <tr>
             <td colspan="${tableNames[tableName].length + 1}">
-              <button class="add-btn" onclick="addRow('${tableName.toLowerCase().replace(/_/g, '-')}-data')">إضافة</button>
+              <button class="add-btn" onclick="openAddModal('${tableName}')">إضافة</button>
             </td>
           </tr>
         </tfoot>
@@ -933,49 +891,83 @@ function saveNewRow(tableId, row) {
     updateTable(tableName);
 }
 
-  // دالة لإضافة صف جديد
-  function openAddModal(tableName) {
-    const modal = document.createElement('div');
-    modal.style.position = 'fixed';
-    modal.style.top = '50%';
-    modal.style.left = '50%';
-    modal.style.transform = 'translate(-50%, -50%)';
-    modal.style.backgroundColor = 'white';
-    modal.style.padding = '20px';
-    modal.style.borderRadius = '8px';
-    modal.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-    modal.style.zIndex = '1001';
+   // دالة لإضافة صف جديد
+   function openAddModal(tableName) {
+      const modal = document.createElement('div');
+      modal.className = 'custom-modal';
 
-    const form = document.createElement('form');
-    tableNames[tableName].forEach(header => {
-      const label = document.createElement('label');
-      label.textContent = header;
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.name = header;
-      form.appendChild(label);
-      form.appendChild(input);
-    });
+      const closeButton = document.createElement('button');
+      closeButton.className = 'close-modal';
+      closeButton.innerHTML = '&times;';
+      closeButton.onclick = () => document.body.removeChild(modal);
 
-    const submitButton = document.createElement('button');
-    submitButton.textContent = 'إضافة';
-    submitButton.onclick = (e) => {
-      e.preventDefault();
-      const newRow = {};
-      Array.from(form.elements).forEach(input => {
-        newRow[input.name] = input.value;
+      const form = document.createElement('form');
+
+      tableNames[tableName].forEach(header => {
+        const label = document.createElement('label');
+        label.textContent = header;
+
+        let input;
+        if (header.includes('حالة التشغيل')) {
+          input = document.createElement('select');
+          ['يعمل', 'لا يعمل', 'بحاجة إلى صيانة'].forEach(optionText => {
+            const option = document.createElement('option');
+            option.value = optionText;
+            option.text = optionText;
+            input.appendChild(option);
+          });
+        } else if (header.includes('أولوية التدخل')) {
+          input = document.createElement('select');
+          ['عالية', 'متوسطة', 'منخفضة'].forEach(optionText => {
+            const option = document.createElement('option');
+            option.value = optionText;
+            option.text = optionText;
+            input.appendChild(option);
+          });
+        } else if (header.includes('انواع التدخل الانساني')) {
+          input = document.createElement('select');
+          ['عالية', 'متوسطة', 'منخفضة'].forEach(optionText => {
+            const option = document.createElement('option');
+            option.value = optionText;
+            option.text = optionText;
+            input.appendChild(option);
+          });
+        } else {
+          input = document.createElement('input');
+          input.type = 'text';
+        }
+
+        input.name = header;
+        form.appendChild(label);
+        form.appendChild(input);
       });
-      newRow.ID = Date.now(); // توليد معرف فريد
-      tablesData[tableName].push(newRow);
-      updateTable(tableName);
-      document.body.removeChild(modal);
-    };
-    form.appendChild(submitButton);
 
-    modal.appendChild(form);
-    document.body.appendChild(modal);
-  }
+      const submitButton = document.createElement('button');
+      submitButton.type = 'submit';
+      submitButton.textContent = 'إضافة';
+      submitButton.onclick = (e) => {
+        e.preventDefault();
 
+        const newRow = {};
+        Array.from(form.elements).forEach(input => {
+          if (input.name) {
+            newRow[input.name] = input.value;
+          }
+        });
+        newRow.ID = Date.now();
+
+        tablesData[tableName].push(newRow);
+        updateTable(tableName);
+
+        document.body.removeChild(modal);
+      };
+
+      form.appendChild(submitButton);
+      modal.appendChild(closeButton);
+      modal.appendChild(form);
+      document.body.appendChild(modal);
+    }// دالة لتحديث الصف
+ 
   // دالة لتحديث الصف
   function updateRow(tableName, rowID, key, value) {
     const rowData = tablesData[tableName].find(row => row.ID === rowID);
